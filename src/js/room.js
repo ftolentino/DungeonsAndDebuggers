@@ -1,4 +1,4 @@
-export class Room {
+export default class Room {
   constructor () {
     this.enemies = {};
     this.currentID = 0;
@@ -17,11 +17,7 @@ export class Room {
   }
 
   removeEnemy (id) {
-    if (this.enemies[id] === undefined) {
-      return false;
-    }
     delete this.enemies[id];
     --this.currentEnemies;
-    return true;
   }
 }

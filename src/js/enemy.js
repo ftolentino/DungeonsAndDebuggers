@@ -1,4 +1,4 @@
-export class Enemy {
+export default class Enemy {
   constructor(name, hp, atk, def, ap, lvl) {
     this.baseHP = hp;
     this.baseATK = atk;
@@ -21,12 +21,5 @@ export class Enemy {
       player.HP -= this.ATK - player.DEF;
     }
   }
-
-}
-
-export class Goblin extends Enemy {
-  constructor(hp, atk, def, ap, lvl) {
-    super(hp, atk, def, ap, lvl);
-  }  
 
 }
