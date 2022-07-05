@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import { Fighter } from './js/character.js';
 import { Enemy } from './js/enemy.js';
-//import { Card } from './js/card.js';
+// import { Card } from './js/card.js';
 import { Room } from './js/room.js';
 
 const data = require('./database.json');
@@ -60,6 +60,7 @@ while (player.HP > 0 && room1.currentEnemies > 0) {
 }
 
 $(document).ready(function(){
-  $(#d)
+  $('#newGame').click(function() {
+  });
 });
 
