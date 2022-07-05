@@ -47,7 +47,8 @@
       "damage",
       6
      ],
-     "energy": 1
+     "energy": 1,
+     "path": "assets/images/sheild.png"
     },
     {
      "name": "defend",
@@ -57,7 +58,8 @@
       "shield",
        5
       ],
-     "energy": 1
+     "energy": 1,
+     "path": "assets/images/sheild.png"
     },
     {
      "name": "bash",
@@ -69,7 +71,8 @@
       "vulnerable", 
       2
     ],
-     "energy": 2
+     "energy": 2,
+     "path": "assets/images/sheild.png"
     },
     {
       "name": "shrug it off",
@@ -81,7 +84,8 @@
        "draw", 
        1
      ],
-      "energy": 2
+      "energy": 2,
+      "path": "assets/images/sheild.png"
     }
   ],
   "enemies": [

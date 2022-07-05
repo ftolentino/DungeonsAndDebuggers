@@ -1,3 +1,9 @@
+.game-screen {
+  width: 800px;
+  height: 400px;
+}
+
 .card-screen {
-  padding: 10;
+  width: 800px;
+  height: 300px;
 }
