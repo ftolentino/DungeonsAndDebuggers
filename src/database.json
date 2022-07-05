@@ -1,0 +1,114 @@
+{
+  "squadName": "Super hero squad",
+  "homeTown": "Metro City",
+  "formed": 2016,
+  "secretBase": "Super tower",
+  "active": true,
+  "members": [
+    {
+      "name": "Molecule Man",
+      "age": 29,
+      "secretIdentity": "Dan Jukes",
+      "powers": [
+        "Radiation resistance",
+        "Turning tiny",
+        "Radiation blast"
+      ]
+    },
+    {
+      "name": "Madame Uppercut",
+      "age": 39,
+      "secretIdentity": "Jane Wilson",
+      "powers": [
+        "Million tonne punch",
+        "Damage resistance",
+        "Superhuman reflexes"
+      ]
+    },
+    {
+      "name": "Eternal Flame",
+      "age": 1000000,
+      "secretIdentity": "Unknown",
+      "powers": [
+        "Immortality",
+        "Heat Immunity",
+        "Inferno",
+        "Teleportation",
+        "Interdimensional travel"
+      ]
+    }
+  ],
+  "cards": [
+    {
+     "name": "strike",
+     "type": "attack",
+     "effect_count" : 1,
+     "effect" : [
+      "damage",
+      6
+     ],
+
+     "energy": 1
+    },
+    {
+     "name": "defend",
+     "type": "skill",
+     "effect_count": 1,
+     "effect": [
+      "shield",
+       5
+      ],
+     "energy": 1
+    },
+    {
+     "name": "bash",
+     "type": "attack",
+     "effect_count": 2,
+     "effect": [
+      "damage",
+      8,
+      "vulnerable", 
+      2
+    ],
+     "energy": 2
+    },
+    {
+      "name": "shrug it off",
+      "type": "skill",
+      "effect_count": 2,
+      "effect": [
+       "sheild",
+       6,
+       "draw", 
+       1
+     ],
+      "energy": 2
+    }
+  ],
+  "enemies": [
+    {
+      "name": "skeleton",
+      "HP": 20,
+      "ATK": 5,
+      "DEF": 3,
+      "AP": 4,
+      "LVL": 1
+    },
+    {
+      "name": "slime",
+      "HP": 40,
+      "ATK": 3,
+      "DEF": 5,
+      "AP": 4,
+      "LVL": 1
+    },
+    {
+      "name": "dragon",
+      "HP": 150,
+      "ATK": 10,
+      "DEF": 10,
+      "AP": 8,
+      "LVL": 1
+    }
+  ]
+}

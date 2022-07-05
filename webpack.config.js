@@ -15,7 +15,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'TITLE',
+      title: 'untitled rpg game',
       template: './src/index.html',
       inject: 'body'
     })
