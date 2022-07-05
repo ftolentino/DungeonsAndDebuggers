@@ -1,4 +1,5 @@
 import Enemy from "../src/js/enemy";  
+import { Character } from './js/character.js';
 
 describe('life', () => {
   let enemy;
@@ -19,5 +20,8 @@ describe('life', () => {
     expect(enemy.name).toEqual("Nettle");
   });
 
-  test
+  test('should lower player HP by 1', () => {
+    const player = new Fighter 
+
+  })
 });
