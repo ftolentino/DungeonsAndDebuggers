@@ -2,15 +2,17 @@ export class Room {
   constructor () {
     this.enemies = {};
     this.currentID = 0;
+    this.currentEnemies = 0;
   }
 
   addEnemy (enemy) {
     enemy.ID = this.assignID();
     this.enemies[enemy.ID] = enemy;
+    this.currentEnemies++;
   }
 
   assignID () {
-    this.currnetID += 1;
+    this.currentID += 1;
     return this.currentID;
   }
 
@@ -19,6 +21,7 @@ export class Room {
       return false;
     }
     delete this.enemies[id];
+    --this.currentEnemies;
     return true;
   }
 }

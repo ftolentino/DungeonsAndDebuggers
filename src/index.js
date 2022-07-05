@@ -10,35 +10,56 @@ import { Room } from './js/room.js';
 const data = require('./database.json');
 console.log(data);
 
-
-
 let turn = 0;
 let room1 = new Room;
 const Skeleton = data.enemies[0];
 const Slime = data.enemies[1];
 const Dragon = data.enemies[2];
-let skeleton1 = new Enemy(Skeleton.HP, Skeleton.ATK, Skeleton.DEF, Skeleton.AP, Skeleton.LVL);
-let slime1 = new Enemy(Slime.HP, Slime.ATK, Slime.DEF, Slime.AP, Slime.LVL);
-let dragon1 = new Enemy(Dragon.HP, Dragon.ATK, Dragon.DEF, Dragon.AP, Dragon.LVL);
-
+let skeleton1 = new Enemy(Skeleton.name, Skeleton.HP, Skeleton.ATK, Skeleton.DEF, Skeleton.ENERGY, Skeleton.LVL);
+let slime1 = new Enemy(Skeleton.name, Slime.HP, Slime.ATK, Slime.DEF, Slime.ENERGY, Slime.LVL);
+let dragon1 = new Enemy(Skeleton.name, Dragon.HP, Dragon.ATK, Dragon.DEF, Dragon.ENERGY, Dragon.LVL);
 
 let player = new Fighter("bigby");
-room1.addEnemy(skeleton1, slime1, dragon1);
+room1.addEnemy(skeleton1);
+room1.addEnemy(slime1);
+room1.addEnemy(dragon1);
 
-while (player.HP > 0 && skeleton1.HP > 0) {
+while (player.HP > 0 && room1.currentEnemies > 0) {
+  const rand = Math.floor(Math.random() * room1.currentEnemies) + 1;
+  let enemies = Object.values(room1.enemies);
   turn++;
-  player.attack(skeleton1);
+
+  switch(rand) {
+  case(1):
+    player.attack(enemies[0]);
+    break;
+  case(2):
+    player.attack(enemies[1]);
+    break;
+  case(3): 
+    player.attack(enemies[2]);
+    break;
+  }
+
   skeleton1.attack(player);
   slime1.attack(player);
   dragon1.attack(player);
+  for (let i=0; i <room1.currentEnemies; i++) {
+    if (Object.values(room1.enemies)[i].HP <= 0) {
+      room1.removeEnemy(Object.values(room1.enemies)[i].ID);
+      console.log("ROOM AFTER ENEMY DEFEAT: ", room1);
+    }
+  }
+
   console.log("TURN #", turn);
   console.log("BIGBY HP: ", player.HP);
-  console.log("SKELETON HP: ", skeleton1.HP);
+  for (let i=0; i<enemies.length; i++) {
+    console.log(`ENEMY ${i} HP: `, enemies[i].HP);
+  }
+
 }
 
 $(document).ready(function(){
-
-
-
+  $(#d)
 });
 

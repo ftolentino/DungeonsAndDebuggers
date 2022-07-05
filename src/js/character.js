@@ -15,20 +15,28 @@ export class Character {
   }
 
   attack(enemy) {
-    enemy.HP -= this.ATK - enemy.DEF;
+    if (enemy.DEF > this.ATK) {
+      enemy.HP -= 1;
+    } else {
+      enemy.HP -= this.ATK - enemy.DEF;
+    }
+  }
+
+  lvlup() {
+    this.LVL += 1;
   }
 
 }
 
 export class Fighter extends Character {
   constructor(name) {
-    super(50, 6, 4, 1, name);
+    super(500, 1000, 4, 1, name);
   }
 }
 
 export class Ranger extends Character {
   constructor(name) {
-    super(30, 5, 4, 1, name)
+    super(30, 5, 4, 1, name);
   }
 }
 
