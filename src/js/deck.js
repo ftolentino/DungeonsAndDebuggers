@@ -1,4 +1,4 @@
-export class Deck {
+export default class Deck {
   constructor(){
   this.cards = {};
   this.cardId = 0;

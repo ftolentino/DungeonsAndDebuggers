@@ -1,3 +1,7 @@
+const data = require('./../database.json');
+import Deck from "./deck.js";
+import Card from "./card.js";
+
 export class Character {
   constructor(hp, atk, def, lvl, name) {
     this.baseHP = hp;
@@ -28,24 +32,17 @@ export class Character {
 
 }
 
-export class Fighter extends Character {
+export class CardPlayer extends Character {
   constructor(name) {
-    super(500, 1000, 4, 1, name);
+    super(25, 12, 4, 1, name);
+    this.deck = new Deck();
+    let strike = new Card(data.cards[0]);
+    let defend = new Card(data.cards[1]);
+    let bash = new Card(data.cards[2]);
+    for (let i = 0; i < 5; i++) {
+      this.deck.addCard(strike);
+      this.deck.addCard(defend);
+    }
+    this.deck.addCard(bash);
   }
 }
-
-export class Ranger extends Character {
-  constructor(name) {
-    super(30, 5, 4, 1, name);
-  }
-}
-
-export class Wizard extends Character {
-  constructor(name) {
-    super(25, 4, 2, 1, name);
-
-    this.baseMP = 20;
-    this.MP = this.baseMP;
-  }
-}
-

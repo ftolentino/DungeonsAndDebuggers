@@ -1,43 +1,4 @@
 {
-  "squadName": "Super hero squad",
-  "homeTown": "Metro City",
-  "formed": 2016,
-  "secretBase": "Super tower",
-  "active": true,
-  "members": [
-    {
-      "name": "Molecule Man",
-      "age": 29,
-      "secretIdentity": "Dan Jukes",
-      "powers": [
-        "Radiation resistance",
-        "Turning tiny",
-        "Radiation blast"
-      ]
-    },
-    {
-      "name": "Madame Uppercut",
-      "age": 39,
-      "secretIdentity": "Jane Wilson",
-      "powers": [
-        "Million tonne punch",
-        "Damage resistance",
-        "Superhuman reflexes"
-      ]
-    },
-    {
-      "name": "Eternal Flame",
-      "age": 1000000,
-      "secretIdentity": "Unknown",
-      "powers": [
-        "Immortality",
-        "Heat Immunity",
-        "Inferno",
-        "Teleportation",
-        "Interdimensional travel"
-      ]
-    }
-  ],
   "cards": [
     {
      "name": "strike",
@@ -48,7 +9,7 @@
       6
      ],
      "energy": 1,
-     "path": "assets/images/sheild.png"
+     "image": "assets/images/sheild.png"
     },
     {
      "name": "defend",
@@ -59,7 +20,7 @@
        5
       ],
      "energy": 1,
-     "path": "assets/images/sheild.png"
+     "image": "assets/images/sheild.png"
     },
     {
      "name": "bash",
@@ -72,7 +33,7 @@
       2
     ],
      "energy": 2,
-     "path": "assets/images/sheild.png"
+     "image": "assets/images/sheild.png"
     },
     {
       "name": "shrug it off",
@@ -80,12 +41,175 @@
       "effect_count": 2,
       "effect": [
        "shield",
-       6,
+       8,
        "draw", 
        1
      ],
+      "energy": 1,
+      "image": "assets/images/sheild.png"
+    },
+    {
+      "name": "pommel strike",
+      "type": "attack",
+      "effect_count": 2,
+      "effect": [
+       "damage",
+       9,
+       "draw", 
+       1
+     ],
+      "energy": 1,
+      "image": "assets/images/sheild.png"
+    },
+    {
+      "name": "twin strike",
+      "type": "attack",
+      "effect_count": 2,
+      "effect": [
+       "damage",
+       5,
+       "damage", 
+       5
+     ],
+      "energy": 1,
+      "image": "assets/images/sheild.png"
+    },
+    {
+      "name": "iron wave",
+      "type": "attack",
+      "effect_count": 2,
+      "effect": [
+       "damage",
+       5,
+       "sheild", 
+       5
+     ],
+      "energy": 1,
+      "image": "assets/images/sheild.png"
+    },
+    {
+      "name": "clothesline",
+      "type": "attack",
+      "effect_count": 2,
+      "effect": [
+       "damage",
+       12,
+       "weak", 
+       2
+     ],
       "energy": 2,
-      "path": "assets/images/sheild.png"
+      "image": "assets/images/sheild.png"
+    },
+    {
+      "name": "shock wave",
+      "type": "skill",
+      "effect_count": 3,
+      "effect": [
+       "weak",
+       3,
+       "vulnerable", 
+       3
+     ],
+      "energy": 2,
+      "image": "assets/images/sheild.png"
+    },
+    {
+      "name": "uppercut",
+      "type": "attack",
+      "effect_count": 3,
+      "effect": [
+       "damage",
+       13,
+       "weak", 
+       1, 
+       "vulnerable",
+       1
+     ],
+      "energy": 2,
+      "image": "assets/images/sheild.png"
+    },
+    {
+      "name": "bludgeon",
+      "type": "attack",
+      "effect_count": 1,
+      "effect": [
+       "damage",
+       32
+     ],
+      "energy": 3,
+      "image": "assets/images/sheild.png"
+    },
+    {
+      "name": "thunderclap",
+      "type": "attack",
+      "effect_count": 2,
+      "effect": [
+       "damage",
+       4,
+       "vulnerable", 
+       1
+     ],
+      "energy": 1,
+      "image": "assets/images/sheild.png"
+    },
+    {
+      "name": "blind",
+      "type": "skill",
+      "effect_count": 1,
+      "effect": [
+       "weak",
+       2
+     ],
+      "energy": 0,
+      "image": "assets/images/sheild.png"
+    },
+    {
+      "name": "trip",
+      "type": "skill",
+      "effect_count": 1,
+      "effect": [
+       "vulnerable",
+       2
+     ],
+      "energy": 0,
+      "image": "assets/images/sheild.png"
+    },
+    {
+      "name": "finesse",
+      "type": "skill",
+      "effect_count": 2,
+      "effect": [
+       "sheild",
+       2,
+       "draw", 
+       1
+     ],
+      "energy": 0,
+      "image": "assets/images/sheild.png"
+    },
+    {
+      "name": "flash of steel",
+      "type": "attack",
+      "effect_count": 2,
+      "effect": [
+       "damage",
+       3,
+       "draw", 
+       1
+     ],
+      "energy": 0,
+      "image": "assets/images/sheild.png"
+    },
+    {
+      "name": "swift strike",
+      "type": "attack",
+      "effect_count": 1,
+      "effect": [
+       "damage",
+       7
+     ],
+      "energy": 0,
+      "image": "assets/images/sheild.png"
     }
   ],
   "enemies": [

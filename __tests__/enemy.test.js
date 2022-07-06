@@ -1,5 +1,5 @@
 import Enemy from "../src/js/enemy";  
-import { Character } from './js/character.js';
+import { Character } from '../src//js/character.js';
 
 describe('life', () => {
   let enemy;
@@ -21,7 +21,15 @@ describe('life', () => {
   });
 
   test('should lower player HP by 1', () => {
-    const player = new Fighter 
+    const player = new Character(40, 5, 6, 4, "Toes");
+    enemy.attack(player);
+    expect(player.HP).toEqual(39);
+  });
 
-  })
+  test('should lower player HP by 2', () => {
+    const player = new Character(40, 5, 3, 4, "Toes");
+    enemy.attack(player);
+    expect(player.HP).toEqual(38);
+  });
+
 });

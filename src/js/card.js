@@ -1,20 +1,21 @@
-export class Card {
-<<<<<<< HEAD
+export default class Card {
 
-  constructor (name, type, effect, energy) {
-    this.name = name;
-    this.type = type;
-    this.effect = effect;
-    this.energy = energy;
-  }
-
-  
-
-=======
   constructor (path) {
     this.name = path.name;
     this.type = path.type;
     this.energy = path.energy;
+    this.json = path;
+
+    this.effectType1 = path.effect[0];
+    this.effectValue1 = path.effect[1];
+    this.effectType2 = path.effect[2];
+    this.effectValue2 = path.effect[3];
+
   }
->>>>>>> 81c3bc891795805762d041aee264dd5880dc4caf
+  
 }
+/*  for (let i = 0; i < path.effect.length; i += 2) {
+    let k = 'effect';
+        eval('this.' + k + 'type' + i + ' = path.effect[' + i + '];');
+        eval('this.' + k + 'type' + i + ' = path.effect[' + (i + 1) + '];');
+    } */
