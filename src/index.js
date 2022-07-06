@@ -9,6 +9,21 @@ import { Room } from './js/room.js';
 
 const data = require('./database.json');
 console.log(data);
+console.log(data.enemies[0]);
+
+
+function displayCard(card, handID) {
+  $("#playerCards").append(`<div class="card col-2" id="card${handID}">
+                            <strong>${card.name} ⚡: ${card.energy}</strong>
+                            <em>${card.type}</em>
+                            <br>
+                            <strong>Effects:</strong>
+                            <em>${card.effectType1} — ${card.effectValue1}</em>`);
+  if (card.effectType2 !== undefined) {
+    $(`#card${card.id}`).append(`<em>${card.effectType2} — ${card.effectValue2}</em>`);
+  }
+  $("#playerCards").append(`</div>`);
+}
 
 /* 
 let turn = 0;
@@ -60,12 +75,46 @@ while (player.HP > 0 && room1.currentEnemies > 0) {
 
 }
  */
-  let zoom = new CardPlayer("bigerby");
-  console.log(zoom);
+let zoom = new CardPlayer("bigerby");
+console.log(zoom);
 
 $(document).ready(function(){
+
+  let player;
+
   $("#newGame").click(function() {
-    let player = new CardPlayer(25, 12, 4, 1, "yiigvik");
+    player = new CardPlayer(25, 12, 4, 1, "yiigvik");
     console.log(player);
+
+    console.log(player.deck.cards);
+
+    $("#playerCards").html("");
+    player.hand = [];
+    for (let i=0; i<5; i++) {
+      let cardNum = Math.floor(Math.random() * player.deck.cardId);
+      if (!player.hand.includes(cardNum)) {
+        player.hand.push(cardNum);
+        let card = Object.values(player.deck.cards)[cardNum];
+        displayCard(card, player.hand.length);
+      } else {
+        i--;
+      }
+    }
+  });
+
+  $(`div#card0`).onclick(function(){
+    console.log(player.hand[0]);
+  });
+  $(`div#card1`).onclick(function(){
+    console.log(player.hand[1]);
+  });
+  $(`div#card2`).onclick(function(){
+    console.log(player.hand[2]);
+  });
+  $(`div#card3`).onclick(function(){
+    console.log(player.hand[3]);
+  });
+  $(`div#card4`).onclick(function(){
+    console.log(player.hand[4]);
   });
 });

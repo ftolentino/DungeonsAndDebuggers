@@ -1,10 +1,8 @@
-import { TestScheduler } from 'jest';
 import Card from './../src/js/card.js';
 const data = require('./../src/database.json');
 
 describe('Card', () => {
 
-  
   test('should populate a card object with values from the database', () => {
     const card = new Card(data.cards[0]);
     expect(card.effectType1).toEqual("damage");

@@ -215,7 +215,7 @@
   "enemies": [
     {
       "name": "skeleton",
-      "HP": 20,
+      "HP": 40,
       "ATK": 5,
       "DEF": 3,
       "ENERGY": 4,
@@ -223,7 +223,7 @@
     },
     {
       "name": "slime",
-      "HP": 40,
+      "HP": 80,
       "ATK": 3,
       "DEF": 5,
       "ENERGY": 4,

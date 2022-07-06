@@ -9,18 +9,26 @@ describe('Deck', () => {
   let card3;
 
   beforeEach(() => {
-    card1 = new Card(data.card[0]);
-    card2 = new Card(data.card[1]);
-    card3 = new Card(data.card[2]);
-    deck = new Deck;
+    card1 = new Card(data.cards[0]);
+    card2 = new Card(data.cards[1]);
+    card3 = new Card(data.cards[2]);
+    deck = new Deck();
   });
 
   test('add card1, card2, and card3 to a deck', () => {
     deck.addCard(card1);
     deck.addCard(card2);
     deck.addCard(card3);
-    expect(deck.cards).toEqual(3);
-    expect(deck.cardsId).toEqual(3);
+    expect(deck.cards).toEqual({"1": {"effectType1": "damage", "effectType2": undefined, "effectValue1": 6, "effectValue2": undefined, "energy": 1, "id": 1, "json": {"effect": ["damage", 6], "effect_count": 1, "energy": 1, "image": "assets/images/sheild.png", "name": "strike", "type": "attack"}, "name": "strike", "type": "attack"}, "2": {"effectType1": "shield", "effectType2": undefined, "effectValue1": 5, "effectValue2": undefined, "energy": 1, "id": 2, "json": {"effect": ["shield", 5], "effect_count": 1, "energy": 1, "image": "assets/images/sheild.png", "name": "defend", "type": "skill"}, "name": "defend", "type": "skill"}, "3": {"effectType1": "damage", "effectType2": "vulnerable", "effectValue1": 8, "effectValue2": 2, "energy": 2, "id": 3, "json": {"effect": ["damage", 8, "vulnerable", 2], "effect_count": 2, "energy": 2, "image": "assets/images/sheild.png", "name": "bash", "type": "attack"}, "name": "bash", "type": "attack"}});
+    expect(deck.cardId).toEqual(3);
+  });
+
+  test('should remove a card from the deck', () => {
+    deck.addCard(card1);
+    deck.addCard(card2);
+    deck.removeCard(1)
+    expect(deck.cards).toEqual();
+    expect(deck.cardId).toEqual(1);
   });
 
 });

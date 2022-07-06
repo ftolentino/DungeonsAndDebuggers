@@ -4,6 +4,14 @@
 }
 
 .card-screen {
-  width: 800px;
-  height: 300px;
+  width: 1200px;
+  height: 500px;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.card {
+  border: 5px ridge darkslategray;
+  margin: 1%;
+  height: 250px;
 }

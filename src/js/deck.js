@@ -1,7 +1,7 @@
 export default class Deck {
   constructor(){
-  this.cards = {};
-  this.cardId = 0;
+    this.cards = {};
+    this.cardId = 0;
   }
 
   addCard(card) {

@@ -1,17 +1,17 @@
 export default class Enemy {
-  constructor(name, hp, atk, def, ap, lvl) {
-    this.baseHP = hp;
-    this.baseATK = atk;
-    this.baseDEF = def;
-    this.ENERGY = ap;
+  constructor(path) {
+    this.baseHP = path.HP;
+    this.baseATK = path.ATK;
+    this.baseDEF = path.DEF;
+    this.ENERGY = path.ENERGY;
 
     this.HP = this.baseHP;
     this.ATK = this.baseATK;
     this.DEF = this.baseDEF;
 
-    this.LVL = lvl;
+    this.LVL = path.LVL;
 
-    this.name = name;
+    this.name = path.name;
   }
 
   attack(player) {
@@ -21,5 +21,4 @@ export default class Enemy {
       player.HP -= this.ATK - player.DEF;
     }
   }
-
 }
