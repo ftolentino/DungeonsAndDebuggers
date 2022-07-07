@@ -1,17 +1,103 @@
+body {
+  background-color: black;
+}
+
+strong {
+  font-size: small;
+}
+
+.container {
+  padding-bottom: 5%;
+}
+
 .game-screen {
-  width: 800px;
-  height: 400px;
+  margin-top: 3%;
+  border: 20px ridge darkgrey;
+  border-bottom: 0px;
+  width: 1000px;
+  height: 500px;
+  background-image: url("./../assets/images/background.png");
+  background-size: cover;
+  background-position: bottom;
+  position: relative;
 }
 
 .card-screen {
+  border: 20px ridge darkgrey;
   width: 1200px;
-  height: 500px;
+  height: 350px;
   padding-top: 2%;
   padding-bottom: 2%;
+  background-image: url("./../assets/images/wood.png");
 }
 
 .card {
-  border: 5px ridge darkslategray;
+  border: 5px ridge;
   margin: 1%;
   height: 250px;
+  box-sizing: border-box;
+  text-align: left;
+
+  display: none;
+}
+
+.attack {
+  background-color:#c83535;
+  border-color:#4f0101;
+}
+
+.skill {
+  background-color:#419dfa;
+  border-color: #013160;
+}
+
+.card-highlight {
+  border: 5px ridge lightgrey;
+  box-shadow: 15px 15px 10px;
+  transform: scale(1.1); 
+}
+
+.card:hover {
+  border-color: lightgrey;
+  box-shadow: 10px 10px 10px;
+  transform: scale(1.2); 
+}
+
+.enemies {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  min-width: 200px;
+  margin-bottom: 5%;
+  margin-right: 2%;
+}
+
+.sprite:hover {
+  text-shadow: 10px 10px 10px;
+  transform: scale(1.2); 
+}
+
+.enemy-highlight {
+  transform: scale(1.1); 
+  border: 10px solid rgba(194, 62, 62, 0.666);
+  border-radius: 150px;
+}
+
+.player {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.box {
+  color: white;
+  min-width: 100px;
+  margin: auto;
+  display: block;
+  font-size: 20px;
+  text-align: right;
+}
+
+.col-4 {
+  min-width: 200px;
 }

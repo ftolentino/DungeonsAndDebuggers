@@ -10,7 +10,9 @@ module.exports = {
   },
   devtool: 'eval-source-map',
   devServer: {               
-    contentBase: './dist'    
+    contentBase: './dist',
+    contentBasePublicPath: '/',
+    publicPath: '/'   
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -41,7 +43,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: 'assets/images/'
+              outputPath: 'src/assets/images/'
             }
           }
         ]

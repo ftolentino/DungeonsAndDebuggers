@@ -1,0 +1,1 @@
+export { default as goblin } from './goblin.png'; // don't worry about this... yet

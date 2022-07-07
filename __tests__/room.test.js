@@ -13,7 +13,7 @@ describe('Room', () => {
   
   test('add an enemy to the room', () => {
     room.addEnemy(enemy);
-    expect(room.enemies).toEqual();
+    expect(room.enemies).toEqual({"1": {"ATK": 3, "DEF": 5, "ENERGY": 4, "HP": 80, "ID": 1, "LVL": 1, "baseATK": 3, "baseDEF": 5, "baseHP": 80, "name": "slime"}});
     expect(room.currentID).toEqual(1);
     expect(room.currentEnemies).toEqual(1);
   });

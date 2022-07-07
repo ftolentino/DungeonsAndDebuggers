@@ -3,19 +3,23 @@ import Deck from "./deck.js";
 import Card from "./card.js";
 
 export class Character {
-  constructor(hp, atk, def, lvl, name) {
+  constructor(hp, atk, def, energy, lvl, name) {
     this.baseHP = hp;
     this.baseATK = atk;
     this.baseDEF = def;
+    this.baseENERGY = energy;
 
     this.HP = this.baseHP;
     this.ATK = this.baseATK;
     this.DEF = this.baseDEF;
+    this.ENERGY = this.baseENERGY;
 
     this.LVL = lvl;
     this.XP = 0;
 
     this.name = name;
+
+    this.hand = [];
   }
 
   attack(enemy) {
@@ -26,7 +30,7 @@ export class Character {
     }
   }
 
-  lvlup() {
+  lvlUp() {
     this.LVL += 1;
   }
 
@@ -34,15 +38,26 @@ export class Character {
 
 export class CardPlayer extends Character {
   constructor(name) {
-    super(25, 12, 4, 1, name);
+    super(100, 12, 4, 3, 1, name);
     this.deck = new Deck();
     let strike = new Card(data.cards[0]);
     let defend = new Card(data.cards[1]);
     let bash = new Card(data.cards[2]);
-    for (let i = 0; i < 5; i++) {
+    let twinStrike = new Card(data.cards[5]);
+    let ironWave = new Card(data.cards[6]);
+    let shockWave = new Card(data.cards[8]);
+    let uppercut = new Card(data.cards[9]);
+
+    for (let i = 0; i < 8; i++) {
       this.deck.addCard(strike);
       this.deck.addCard(defend);
     }
-    this.deck.addCard(bash);
+    for (let i=0; i<2; i++) {
+      this.deck.addCard(bash);
+      this.deck.addCard(twinStrike);
+      this.deck.addCard(ironWave);
+      this.deck.addCard(shockWave);
+      this.deck.addCard(uppercut);
+    }
   }
 }

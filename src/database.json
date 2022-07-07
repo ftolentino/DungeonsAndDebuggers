@@ -9,7 +9,7 @@
       6
      ],
      "energy": 1,
-     "image": "assets/images/sheild.png"
+     "image": "assets/images/sword.png"
     },
     {
      "name": "defend",
@@ -20,7 +20,7 @@
        5
       ],
      "energy": 1,
-     "image": "assets/images/sheild.png"
+     "image": "assets/images/shield.png"
     },
     {
      "name": "bash",
@@ -29,11 +29,11 @@
      "effect": [
       "damage",
       8,
-      "vulnerable", 
+      "weaken", 
       2
     ],
      "energy": 2,
-     "image": "assets/images/sheild.png"
+     "image": "assets/images/bash.png"
     },
     {
       "name": "shrug it off",
@@ -46,7 +46,7 @@
        1
      ],
       "energy": 1,
-      "image": "assets/images/sheild.png"
+      "image": "assets/images/shield.png"
     },
     {
       "name": "pommel strike",
@@ -59,7 +59,7 @@
        1
      ],
       "energy": 1,
-      "image": "assets/images/sheild.png"
+      "image": "assets/images/sword.png"
     },
     {
       "name": "twin strike",
@@ -72,7 +72,7 @@
        5
      ],
       "energy": 1,
-      "image": "assets/images/sheild.png"
+      "image": "assets/images/twin_strike.png"
     },
     {
       "name": "iron wave",
@@ -81,11 +81,11 @@
       "effect": [
        "damage",
        5,
-       "sheild", 
+       "shield", 
        5
      ],
       "energy": 1,
-      "image": "assets/images/sheild.png"
+      "image": "assets/images/shield_sword.png"
     },
     {
       "name": "clothesline",
@@ -98,20 +98,20 @@
        2
      ],
       "energy": 2,
-      "image": "assets/images/sheild.png"
+      "image": "assets/images/flex.png"
     },
     {
       "name": "shock wave",
       "type": "skill",
       "effect_count": 3,
       "effect": [
-       "weak",
+       "shield",
        3,
-       "vulnerable", 
+       "weaken", 
        3
      ],
       "energy": 2,
-      "image": "assets/images/sheild.png"
+      "image": "assets/images/wave.png"
     },
     {
       "name": "uppercut",
@@ -120,13 +120,11 @@
       "effect": [
        "damage",
        13,
-       "weak", 
-       1, 
-       "vulnerable",
+       "weaken",
        1
      ],
       "energy": 2,
-      "image": "assets/images/sheild.png"
+      "image": "assets/images/flex.png"
     },
     {
       "name": "bludgeon",
@@ -137,7 +135,7 @@
        32
      ],
       "energy": 3,
-      "image": "assets/images/sheild.png"
+      "image": "assets/images/bash.png"
     },
     {
       "name": "thunderclap",
@@ -146,11 +144,11 @@
       "effect": [
        "damage",
        4,
-       "vulnerable", 
+       "weaken", 
        1
      ],
       "energy": 1,
-      "image": "assets/images/sheild.png"
+      "image": "assets/images/wave.png"
     },
     {
       "name": "blind",
@@ -161,31 +159,31 @@
        2
      ],
       "energy": 0,
-      "image": "assets/images/sheild.png"
+      "image": "assets/images/shield.png"
     },
     {
       "name": "trip",
       "type": "skill",
       "effect_count": 1,
       "effect": [
-       "vulnerable",
+       "weaken",
        2
      ],
       "energy": 0,
-      "image": "assets/images/sheild.png"
+      "image": "assets/images/shield.png"
     },
     {
       "name": "finesse",
       "type": "skill",
       "effect_count": 2,
       "effect": [
-       "sheild",
+       "shield",
        2,
        "draw", 
        1
      ],
       "energy": 0,
-      "image": "assets/images/sheild.png"
+      "image": "assets/images/shield.png"
     },
     {
       "name": "flash of steel",
@@ -198,7 +196,7 @@
        1
      ],
       "energy": 0,
-      "image": "assets/images/sheild.png"
+      "image": "assets/images/shield.png"
     },
     {
       "name": "swift strike",
@@ -209,17 +207,18 @@
        7
      ],
       "energy": 0,
-      "image": "assets/images/sheild.png"
+      "image": "assets/images/shield.png"
     }
   ],
   "enemies": [
     {
-      "name": "skeleton",
+      "name": "goblin",
       "HP": 40,
       "ATK": 5,
       "DEF": 3,
       "ENERGY": 4,
-      "LVL": 1
+      "LVL": 1,
+      "image": "src/assets/images/goblin.png"
     },
     {
       "name": "slime",

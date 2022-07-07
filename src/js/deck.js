@@ -17,4 +17,5 @@ export default class Deck {
   removeCard(id) {
     delete this.cards[id];
   }
+
 }

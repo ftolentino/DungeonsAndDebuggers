@@ -14,7 +14,7 @@ describe('life', () => {
     expect(enemy.HP).toEqual(40);
     expect(enemy.ATK).toEqual(5);
     expect(enemy.DEF).toEqual(3);
-    expect(enemy.name).toEqual("skeleton");
+    expect(enemy.name).toEqual("goblin");
   });
 
   test('should lower player HP by 1', () => {

@@ -12,6 +12,7 @@ export default class Enemy {
     this.LVL = path.LVL;
 
     this.name = path.name;
+    this.sprite = path.image;
   }
 
   attack(player) {
