@@ -1,8 +1,8 @@
-# (Application Name)
+# Dungeons and Debuggers;
 
-#### (Brief Description)
+#### A breif (buggy) adventure through dungeons and caves
 
-#### By Anthony DiFalco
+#### By Anthony DiFalco, Filmer Tolentino, Mo Byrne, Tyler Emmerson, and Zachary Waggoner
 
 ## Technologies Used
 
@@ -16,18 +16,16 @@
 ## Setup/Installation Requirements
 
 * clone this repository using<br>
-```git clone https://github.com/Di-Falco/template-repo```
+`git clone https://github.com/Di-Falco/team-week`
 * run<br> 
-```npm install```
-* update the title of the project, located on line 18 of webpack.config.js<br>
-```18      title: 'TITLE',```
+`npm install`
+* run<br>
+`npm run start`
 
 ## Known Bugs
 
 * _Any known issues_
 * _should go here_
-
-## License
 
 ## Contact Information
 

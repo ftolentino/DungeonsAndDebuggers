@@ -1,5 +1,30 @@
-node_modules/
+## Ignore these files, they will be generated for you
+
+# OS generated files
 .DS_Store
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Webpack build files
 dist/
 package-lock.json
+
+# Jest code coverage results
+*.coverage
+*.coveragexml
 coverage/
+
+# VSCode Files
+.vscode/
+
+# Dependency directories
+node_modules/
+
+# dotenv environment variable files
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local

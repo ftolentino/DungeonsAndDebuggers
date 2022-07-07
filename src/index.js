@@ -67,7 +67,7 @@ function getRoom(path, x, y) {
 // i: the index of the enemy's html id
 function displayEnemyHP(enemy, i) {
   $(`#enemy${i}`).html(`<img class="sprite" src="${(enemy).sprite}">`);
-  $(`#enemy${i}`).append(`<div class="box"><strong>${enemy.HP} / ${enemy.baseHP}❤️</strong></div>`);
+  $(`#enemy${i}`).append(`<div class="box"><strong>${enemy.HP} / ${enemy.baseHP} ❤️ </strong></div>`);
 }
 
 // displays each enemy sprite in the room
@@ -92,7 +92,7 @@ function displayPlayer(player) {
 // display the players HP and Energy values
 // player: the player object
 function displayPlayerHP(player) {
-  $(`#playerImage`).append(`<div class="box"><strong>${player.HP} / ${player.baseHP}❤️ | ⚡: ${player.baseENERGY}</strong></div>`);
+  $(`#playerImage`).append(`<div class="box"><strong>${player.HP} / ${player.baseHP} ❤️ | ⚡: ${player.baseENERGY}</strong></div>`);
 }
 
 // highlights a card from the hand when clicked

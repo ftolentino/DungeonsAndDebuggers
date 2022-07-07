@@ -20,7 +20,6 @@ describe('Room', () => {
 
   test('remove an enemy from the room', () => {
     room.addEnemy(enemy);
-    room.enemies[undefined];
     room.removeEnemy(enemy);
     expect(room.currentEnemies).toEqual(0);
   });
