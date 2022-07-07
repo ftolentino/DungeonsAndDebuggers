@@ -17,7 +17,7 @@
      "effect_count": 1,
      "effect": [
       "shield",
-       5
+       7
       ],
      "energy": 1,
      "image": "assets/images/shield.png"
@@ -214,7 +214,7 @@
     {
       "name": "goblin",
       "HP": 40,
-      "ATK": 10,
+      "ATK": 8,
       "DEF": 3,
       "ENERGY": 4,
       "LVL": 1,

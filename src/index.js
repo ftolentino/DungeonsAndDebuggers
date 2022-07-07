@@ -67,22 +67,24 @@ function getRoom(path, x, y) {
 // i: the index of the enemy's html id
 function displayEnemyHP(enemy, i) {
   $(`#enemy${i}`).html(`<img class="sprite" src="${(enemy).sprite}">`);
-  $(`#enemy${i}`).append(`<div class="box"><strong>${enemy.HP} / ${enemy.baseHP}</strong></div>`);
+  $(`#enemy${i}`).append(`<div class="box"><strong>${enemy.HP} / ${enemy.baseHP}❤️</strong></div>`);
 }
 
 // displays each enemy sprite in the room
 // room: the room where the enemies are accessed
 function displayEnemies(room) {
   for (let i=0; i<room.currentEnemies; i++) {
-    $(`.enemies`).append(`<div class="col-4 d-flex flex-column align-items-end" id="enemy${i}"><img class="sprite" src="${Object.values(room.enemies)[i].sprite}"></div>`);
-    displayEnemyHP(Object.values(room.enemies)[i], i);
+    if (Object.values(room.enemies)[i] !== undefined) {
+      $(`.enemies`).append(`<div class="col-4 d-flex flex-column align-items-end" id="enemy${i}"><img class="sprite" src="${Object.values(room.enemies)[i].sprite}"></div>`);
+      displayEnemyHP(Object.values(room.enemies)[i], i);
+    }
   }
 }
 
 // displays the player sprite
 // player: the player object
 function displayPlayer(player) {
-  $(".player").html(`<div class="col-4 d-flex flex-column align-items-end""><img class="sprite" src="/src/assets/images/crab-pink.png"></div>`);
+  $(".player").html(`<div class="col-12 d-flex flex-column align-items-end" id="playerImage"><img class="sprite" src="/src/assets/images/crab-pink.png"></div>`);
   //$('.player').append(`<img src=''>`);
   displayPlayerHP(player);
 }
@@ -90,7 +92,7 @@ function displayPlayer(player) {
 // display the players HP and Energy values
 // player: the player object
 function displayPlayerHP(player) {
-  $(`.player`).append(`<div class="box"><strong>${player.HP} / ${player.baseHP} | ⚡: ${player.baseENERGY}</strong></div>`);
+  $(`#playerImage`).append(`<div class="box"><strong>${player.HP} / ${player.baseHP}❤️ | ⚡: ${player.baseENERGY}</strong></div>`);
 }
 
 // highlights a card from the hand when clicked
@@ -153,7 +155,7 @@ function playerTurn(player, cards, enemy) {
     if(cards[i].type === "attack") {
       switch(cards[i].effectType1) {
       case("damage"):
-        enemy.HP -= cards[i].effectValue1;
+        enemy.HP -= (cards[i].effectValue1 + player.ATK) - enemy.DEF;
         break;
       case("shield"):
         player.HP += cards[i].effectValue1;
@@ -179,8 +181,26 @@ function playerTurn(player, cards, enemy) {
   }
 }
 
+function removeEnemies(room) {
+  console.log(Object.values(room.enemies));
+  for (let i=0; i<room.currentEnemies; i++) {
+    if(Object.values(room.enemies)[i] !== undefined && Object.values(room.enemies)[i].HP <= 0) {
+      room.removeEnemy(Object.values(room.enemies)[i].ID);
+      console.log("room after enemy defeat", room.enemies);
+      $(`#enemy${i}`).hide("slow");
+      setTimeout(function() {
+        $(`#enemy${i}`).html("");
+      }, 500);
+    }
+  }
+}
+
+function loading() {
+  $("#loading").remove();
+}
+
 $(document).ready(function(){
-  $("#loading").hide();
+  setTimeout(loading, 4000);
   let player;
   let room;
   let selectedCards = [];
@@ -315,7 +335,7 @@ $(document).ready(function(){
     
       let energyCost = 0;
       let playCards = [];
-      let selectedEnemy;
+      let selectedEnemy = [false, false, false];
       if(i === 0) {
         for (let i=0; i<selectedCards.length; i++) {
           if (selectedCards[i] === true) {
@@ -356,7 +376,9 @@ $(document).ready(function(){
           console.log("PLAYER: ", player);
           for (let i=0; i<Object.values(room.enemies).length; i++) {
             console.log("ROOM ENEMY: ", Object.values(room.enemies)[i]);
-            (Object.values(room.enemies)[i]).attack(player);
+            if (Object.values(room.enemies)[i] !== undefined) {
+              (Object.values(room.enemies)[i]).attack(player);
+            }
             displayPlayer(player);
           }
           // remove enemy if hp is 0
@@ -367,15 +389,4 @@ $(document).ready(function(){
 
     
   });
-
-  function removeEnemies(room) {
-    console.log(Object.values(room.enemies));
-    for (let i=0; i<room.currentEnemies; i++) {
-      if(Object.values(room.enemies)[i].HP <= 0) {
-        console.log(`#enemy${i}`);
-        $(`#enemy${i}`).hide();
-      }
-    }
-  }
-
 });

@@ -46,15 +46,15 @@ describe('Character', () =>  {
 
   test('should return a cardPlayer obect with default stats', () => {
     const cardPlayer1 = new CardPlayer("Test");
-    expect(cardPlayer1.baseHP).toEqual(100);
-    expect(cardPlayer1.baseATK).toEqual(12);
-    expect(cardPlayer1.baseDEF).toEqual(4);
+    expect(cardPlayer1.baseHP).toEqual(80);
+    expect(cardPlayer1.baseATK).toEqual(2);
+    expect(cardPlayer1.baseDEF).toEqual(5);
     expect(cardPlayer1.baseENERGY).toEqual(3);
     expect(cardPlayer1.LVL).toEqual(1);
     expect(cardPlayer1.name).toEqual("Test");
-    expect(cardPlayer1.HP).toEqual(100);
-    expect(cardPlayer1.ATK).toEqual(12);
-    expect(cardPlayer1.DEF).toEqual(4);
+    expect(cardPlayer1.HP).toEqual(80);
+    expect(cardPlayer1.ATK).toEqual(2);
+    expect(cardPlayer1.DEF).toEqual(5);
     expect(cardPlayer1.ENERGY).toEqual(3);
     expect(cardPlayer1.XP).toEqual(0);
 

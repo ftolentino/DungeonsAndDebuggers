@@ -17,7 +17,7 @@ export default class Room {
   }
 
   removeEnemy (id) {
-    delete this.enemies[id];
-    --this.currentEnemies;
+    this.enemies[id] = undefined;
+    this.currentEnemies;
   }
 }

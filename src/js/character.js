@@ -38,7 +38,7 @@ export class Character {
 
 export class CardPlayer extends Character {
   constructor(name) {
-    super(100, 12, 4, 3, 1, name);
+    super(80, 2, 5, 3, 1, name);
     this.deck = new Deck();
     let strike = new Card(data.cards[0]);
     let defend = new Card(data.cards[1]);

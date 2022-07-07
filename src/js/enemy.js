@@ -16,10 +16,11 @@ export default class Enemy {
   }
 
   attack(player) {
-    if (player.DEF >= this.ATK) {
+    let damage = Math.floor(Math.random() * (this.ATK+2) + this.ATK);
+    if (player.DEF >= damage) {
       player.HP -= 1;
     } else{
-      player.HP -= this.ATK - player.DEF;
+      player.HP -= damage - player.DEF;
     }
   }
 }
