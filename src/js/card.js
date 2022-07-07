@@ -11,11 +11,5 @@ export default class Card {
     this.effectType2 = path.effect[2];
     this.effectValue2 = path.effect[3];
 
-  }
-  
+  } 
 }
-/*  for (let i = 0; i < path.effect.length; i += 2) {
-    let k = 'effect';
-        eval('this.' + k + 'type' + i + ' = path.effect[' + i + '];');
-        eval('this.' + k + 'type' + i + ' = path.effect[' + (i + 1) + '];');
-    } */

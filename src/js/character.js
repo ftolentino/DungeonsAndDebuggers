@@ -22,18 +22,6 @@ export class Character {
     this.hand = [];
   }
 
-  attack(enemy) {
-    if (enemy.DEF > this.ATK) {
-      enemy.HP -= 1;
-    } else {
-      enemy.HP -= this.ATK - enemy.DEF;
-    }
-  }
-
-  lvlUp() {
-    this.LVL += 1;
-  }
-
 }
 
 export class CardPlayer extends Character {

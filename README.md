@@ -1,17 +1,22 @@
-# Dungeons and Debuggers;
+# _Dungeons and Debuggers;_
 
-#### A breif (buggy) adventure through dungeons and caves
+#### _A breif (buggy) adventure through dungeons and caves._
 
-#### By Anthony DiFalco, Filmer Tolentino, Mo Byrne, Tyler Emmerson, and Zachary Waggoner
+#### By: _Anthony DiFalco, Filmer Tolentino, Mo Byrne, Tyler Emmerson, and Zachary Waggoner_
 
 ## Technologies Used
 
-* _List all_
-* _the major technologies_
-* _you used in your project_
-* _here_
+* _HTML_
+* _CSS_
+* _Bootstrap_
+* _JavaScript_
+* _jQuery_
+* _GitHub repositories_
 
 ## Description
+
+_Yes._
+
 
 ## Setup/Installation Requirements
 
@@ -24,10 +29,11 @@
 
 ## Known Bugs
 
-* _Any known issues_
-* _should go here_
+* Not bugs, features ;)
+* perfect quality game ready for release *
 
 ## Contact Information
 
-Anthony DiFalco
-aodifalco@gmail.com
+## License
+
+_<p><a href="LICENSE">MIT</a></p>_
