@@ -79,7 +79,7 @@ strong {
 
 .enemy-highlight {
   transform: scale(1.1); 
-  border: 10px solid rgba(194, 62, 62, 0.666);
+  border: 4px solid rgba(194, 62, 62, 0.666);
   border-radius: 150px;
 }
 
@@ -87,6 +87,9 @@ strong {
   position: absolute;
   bottom: 0;
   left: 0;
+  min-width: 200px;
+  margin-bottom: 5%;
+  margin-right: 2%;
 }
 
 .box {
@@ -100,4 +103,8 @@ strong {
 
 .col-4 {
   min-width: 200px;
+}
+
+.hidden {
+  display: none;
 }

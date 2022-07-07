@@ -12,30 +12,40 @@ console.log(data);
 // selects 5 cards from the deck and adds them to the player's hand
 // player: player object
 function drawHand(player) {
-  $("#playerCards").html("");
   player.hand = [];
   for (let i=0; i<5; i++) {
     let cardNum = Math.floor(Math.random() * (player.deck.cardId -1) + 1);
-    if (!player.hand.includes(cardNum)) {
+    if (!player.hand.includes(Object.values(player.deck.cards)[cardNum])) {
       let card = Object.values(player.deck.cards)[cardNum];
       player.hand.push(card);
-      displayCard(card, player.hand.length-1);
+      displayCard(card, i);
     } else {
       i--;
     }
   }
+  console.log("PLAYER HAND: ", player.hand);
 }
 
 // displays each card in the hand, formatted as a button
 // card: the object where the card info is stored
 // handID: the spot in the hand array / html id where the card exists
 function displayCard(card, handID) {
-  $(`#playerCards`).append(`<button class="card col-2 ${card.type}" id="card${handID}"><strong>${(card.name).toUpperCase()}</strong><br><em>${card.type} ⚡: ${card.energy}</em><br><strong>Effects:</strong><br><em>${card.effectType1} — ${card.effectValue1}</em><br>`);
+  console.log("CARD: ", card.type);
+  console.log("HAND ID: ", handID);
+  $(`#card${handID}`).html("");
+  $(`#card${handID}`).html(`<strong>${(card.name).toUpperCase()}</strong><br><em>${card.type} ⚡: ${card.energy}</em><br><strong>Effects:</strong><br><em>${card.effectType1} — ${card.effectValue1}</em><br>`);
   if (card.effectType2 !== undefined) {
     $(`#card${handID}`).append(`<em>${card.effectType2} — ${card.effectValue2}</em>`);
   }
-  $(`#playerCards`).append(`</button>`);
+  $(`#card${handID}`).addClass(`${card.type}`);
+  if (card.type === "attack") {
+    $(`#card${handID}`).removeClass("skill");
+  } else if (card.type === "skill") {
+    $(`#card${handID}`).removeClass("attack");
+  }
   $(`.card`).slideDown();
+  console.log("CARD: ", card.type);
+  console.log("HAND ID: ", handID);
 }
 
 // creates an instance of a room and adds a random number of enemies
@@ -72,7 +82,7 @@ function displayEnemies(room) {
 // displays the player sprite
 // player: the player object
 function displayPlayer(player) {
-  $(".player").html("");
+  $(".player").html(`<div class="col-4 d-flex flex-column align-items-end""><img class="sprite" src="/src/assets/images/crab-pink.png"></div>`);
   //$('.player').append(`<img src=''>`);
   displayPlayerHP(player);
 }
@@ -112,12 +122,29 @@ function enemyHighlightReset(enemies) {
     $(`#enemy${i}`).removeClass("enemy-highlight");
   }
 }
-
+// Player Turn
 function playerTurn(player, cards, enemy) {
+  console.log(cards);
+  console.log(enemy);
   for (let i=0; i<cards.length; i++) {
     if(cards[i].type === "skill") {
       switch(cards[i].effectType1) {
+      case(undefined):
+        break;
       case("shield"):
+        player.HP += cards[i].effectValue1;
+        break;
+      case("weaken"):
+        enemy.DEF -= cards[i].effectValue1;
+      }
+      switch(cards[i].effectType2) {
+      case(undefined):
+        break;
+      case("shield"):
+        player.HP += cards[i].effectValue2;
+        break;
+      case("weaken"):
+        enemy.DEF -= cards[i].effectValue2;
         break;
       }
     }
@@ -152,84 +179,15 @@ function playerTurn(player, cards, enemy) {
   }
 }
 
-function cardSelectReset(selectedCards) {
-
-  selectedCards = [false, false, false, false, false];
-
-  $("#card0").click(() => {
-    cardHighlight(0);
-    if(selectedCards[0] === false){
-      selectedCards[0] = true;
-    } else if (selectedCards[0] === true){
-      selectedCards[0] = false;
-    }
-  });
-  $("#card1").click(() => {
-    cardHighlight(1);
-    if(selectedCards[1] === false){
-      selectedCards[1] = true;
-    } else if (selectedCards[1] === true){
-      selectedCards[1] = false;
-    }
-  });
-  $("#card2").click(() => {
-    cardHighlight(2);
-    if(selectedCards[2] === false){
-      selectedCards[2] = true;
-    } else if (selectedCards[2] === true){
-      selectedCards[2] = false;
-    }
-  });
-  $("#card3").click(() => {
-    cardHighlight(3);
-    if(selectedCards[3] === false){
-      selectedCards[3] = true;
-    } else if (selectedCards[3] === true){
-      selectedCards[3] = false;
-    }
-  });
-  $("#card4").click(() => {
-    cardHighlight(4);
-    if(selectedCards[4] === false){
-      selectedCards[4] = true;
-    } else if (selectedCards[4] === true){
-      selectedCards[4] = false;
-    }
-  });
-
-  return selectedCards;
-
-}
-
-function enemySelectReset (selectedEnemies, room) {
-
-  $("#enemy0").click(() => {
-    enemyHighlight(Object.values(room.enemies), 0);
-    selectedEnemies[0] = true;
-
-  });
-  $("#enemy1").click(() => {
-    enemyHighlight(Object.values(room.enemies), 1);
-    selectedEnemies[1] = true;
-  });
-  $("#enemy2").click(() => {
-    enemyHighlight(Object.values(room.enemies), 2);
-    selectedEnemies[2] = true;
-  });
-
-  return selectedEnemies;
-
-}
-
 $(document).ready(function(){
-
+  $("#loading").hide();
   let player;
   let room;
   let selectedCards = [];
   let selectedEnemies = [];
-
+  // New Game event: deals 5 cards, instantiates player, player can select an enemy to attack, and cards to spend energy points before ending turn.
   $("#newGame").click(() => {
-    player = new CardPlayer(25, 12, 4, 1, "begby");
+    player = new CardPlayer("begby");
 
     selectedCards = [false, false, false, false, false];
     selectedEnemies = [false, false, false];
@@ -240,59 +198,184 @@ $(document).ready(function(){
     room = getRoom(data.enemies, 3, 1);
     displayEnemies(room);
 
-    enemySelectReset(selectedEnemies, room);
-    cardSelectReset(selectedCards);
-
-  });
-
-  $("#endTurn").click(() => {
-    let energyCost = 0;
-    let playCards = [];
-    let selectedEnemy;
-
-    for (let i=0; i<selectedCards.length; i++) {
-      if (selectedCards[i] === true) {
-        playCards.push(player.hand[i]);
-        energyCost += player.hand[i].energy;
+    $("#card0").click(() => {
+      cardHighlight(0);
+      if(selectedCards[0] === false){
+        selectedCards[0] = true;
+      } else if (selectedCards[0] === true){
+        selectedCards[0] = false;
       }
-    }
-
-    for (let i=0; i<room.currentEnemies; i++) {
-      if (selectedEnemies[i] === true) {
-        selectedEnemy = Object.values(room.enemies)[i];
+    });
+    $("#card1").click(() => {
+      cardHighlight(1);
+      if(selectedCards[1] === false){
+        selectedCards[1] = true;
+      } else if (selectedCards[1] === true){
+        selectedCards[1] = false;
       }
-    }
+    });
+    $("#card2").click(() => {
+      cardHighlight(2);
+      if(selectedCards[2] === false){
+        selectedCards[2] = true;
+      } else if (selectedCards[2] === true){
+        selectedCards[2] = false;
+      }
+    });
+    $("#card3").click(() => {
+      cardHighlight(3);
+      if(selectedCards[3] === false){
+        selectedCards[3] = true;
+      } else if (selectedCards[3] === true){
+        selectedCards[3] = false;
+      }
+    });
+    $("#card4").click(() => {
+      cardHighlight(4);
+      if(selectedCards[4] === false){
+        selectedCards[4] = true;
+      } else if (selectedCards[4] === true){
+        selectedCards[4] = false;
+      }
+    });
 
-    console.log(playCards);
-    console.log(energyCost);
-
-    if (energyCost > player.baseENERGY) {
-      enemyHighlightReset(Object.values(room.enemies));
-      cardHighlightReset();
-      alert("You don't have enough energy to play those cards");
-    }
-     
-    if (selectedEnemies[0] !== true && selectedEnemies[1] !== true && selectedEnemies[2] !== true) {
-      alert("You have to select a target before ending your turn");
-    }
-
-    if (selectedCards[0] !== true && selectedCards[1] !== true && selectedCards[2] !== true && selectedCards[3] !== true && selectedCards[4] !== true) {
-      enemyHighlightReset(Object.values(room.enemies));
-      alert("You need to select at least one card to end your turn");
-    }
-    
-    playerTurn(player, playCards, selectedEnemy);
-    displayEnemyHP(selectedEnemy, selectedEnemies.indexOf(true));
-    cardHighlightReset();
-    enemyHighlightReset(Object.values(room.enemies));
-    drawHand(player);
-
-    cardSelectReset(selectedCards);
-    enemySelectReset(selectedEnemies, room);
-
-
-  });
-
+    $("#enemy0").click(() => {
+      enemyHighlight(Object.values(room.enemies), 0);
+      selectedEnemies[0] = true;
   
+    });
+    $("#enemy1").click(() => {
+      enemyHighlight(Object.values(room.enemies), 1);
+      selectedEnemies[1] = true;
+    });
+    $("#enemy2").click(() => {
+      enemyHighlight(Object.values(room.enemies), 2);
+      selectedEnemies[2] = true;
+    });
+
+  });
+  // End Turn event
+  $("#endTurn").click(() => {
+    for (let i=0; i<2; i++) {
+      $("#card0").click(() => {
+        cardHighlight(0);
+        if(selectedCards[0] === false){
+          selectedCards[0] = true;
+        } else if (selectedCards[0] === true){
+          selectedCards[0] = false;
+        }
+      });
+      $("#card1").click(() => {
+        cardHighlight(1);
+        if(selectedCards[1] === false){
+          selectedCards[1] = true;
+        } else if (selectedCards[1] === true){
+          selectedCards[1] = false;
+        }
+      });
+      $("#card2").click(() => {
+        cardHighlight(2);
+        if(selectedCards[2] === false){
+          selectedCards[2] = true;
+        } else if (selectedCards[2] === true){
+          selectedCards[2] = false;
+        }
+      });
+      $("#card3").click(() => {
+        cardHighlight(3);
+        if(selectedCards[3] === false){
+          selectedCards[3] = true;
+        } else if (selectedCards[3] === true){
+          selectedCards[3] = false;
+        }
+      });
+      $("#card4").click(() => {
+        cardHighlight(4);
+        if(selectedCards[4] === false){
+          selectedCards[4] = true;
+        } else if (selectedCards[4] === true){
+          selectedCards[4] = false;
+        }
+      });
+  
+      $("#enemy0").click(() => {
+        enemyHighlight(Object.values(room.enemies), 0);
+        selectedEnemies[0] = true;
+    
+      });
+      $("#enemy1").click(() => {
+        enemyHighlight(Object.values(room.enemies), 1);
+        selectedEnemies[1] = true;
+      });
+      $("#enemy2").click(() => {
+        enemyHighlight(Object.values(room.enemies), 2);
+        selectedEnemies[2] = true;
+      });
+  
+    
+      let energyCost = 0;
+      let playCards = [];
+      let selectedEnemy;
+      if(i === 0) {
+        for (let i=0; i<selectedCards.length; i++) {
+          if (selectedCards[i] === true) {
+            playCards.push(player.hand[i]);
+            energyCost += player.hand[i].energy;
+          }
+        }
+
+        for (let i=0; i<room.currentEnemies; i++) {
+          if (selectedEnemies[i] === true) {
+            selectedEnemy = Object.values(room.enemies)[i];
+          }
+        }
+
+        console.log(playCards);
+        console.log(energyCost);
+        console.log("SELECTED ENEMIES: ",selectedEnemies);
+        console.log("SELECTED CARDS: ", selectedCards);
+
+        if (energyCost > player.baseENERGY) {
+          enemyHighlightReset(Object.values(room.enemies));
+          cardHighlightReset();
+          alert("You don't have enough energy to play those cards");
+        } else if (selectedEnemies[0] !== true && selectedEnemies[1] !== true && selectedEnemies[2] !== true) {
+          alert("You have to select a target before ending your turn");
+        } else if (selectedCards[0] !== true && selectedCards[1] !== true && selectedCards[2] !== true && selectedCards[3] !== true && selectedCards[4] !== true) {
+          enemyHighlightReset(Object.values(room.enemies));
+          alert("You need to select at least one card to end your turn");
+        } else {
+          playerTurn(player, playCards, selectedEnemy);
+          displayEnemyHP(selectedEnemy, selectedEnemies.indexOf(true));
+          cardHighlightReset();
+          enemyHighlightReset(Object.values(room.enemies));
+          selectedCards = [false, false, false, false, false];
+          selectedEnemies = [false, false, false];
+          drawHand(player);
+        
+          console.log("PLAYER: ", player);
+          for (let i=0; i<Object.values(room.enemies).length; i++) {
+            console.log("ROOM ENEMY: ", Object.values(room.enemies)[i]);
+            (Object.values(room.enemies)[i]).attack(player);
+            displayPlayer(player);
+          }
+          // remove enemy if hp is 0
+          removeEnemies(room); 
+        }    
+      }
+    }
+
+    
+  });
+
+  function removeEnemies(room) {
+    console.log(Object.values(room.enemies));
+    for (let i=0; i<room.currentEnemies; i++) {
+      if(Object.values(room.enemies)[i].HP <= 0) {
+        console.log(`#enemy${i}`);
+        $(`#enemy${i}`).hide();
+      }
+    }
+  }
 
 });

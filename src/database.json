@@ -214,16 +214,16 @@
     {
       "name": "goblin",
       "HP": 40,
-      "ATK": 5,
+      "ATK": 10,
       "DEF": 3,
       "ENERGY": 4,
       "LVL": 1,
-      "image": "src/assets/images/goblin.png"
+      "image": "./src/assets/images/goblin.png"
     },
     {
       "name": "slime",
       "HP": 80,
-      "ATK": 3,
+      "ATK": 8,
       "DEF": 5,
       "ENERGY": 4,
       "LVL": 1

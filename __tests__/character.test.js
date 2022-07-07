@@ -7,7 +7,7 @@ describe('Character', () =>  {
   let cardPlayer1;
 
   beforeEach(() => {
-    character = new Character(80, 8, 8, 1, "Peat")
+    character = new Character(80, 8, 8, 3, 1, "Peat")
     cardPlayer1 = new CardPlayer;
   });
 
@@ -15,7 +15,9 @@ describe('Character', () =>  {
     expect(character.baseHP).toEqual(80);
     expect(character.baseATK).toEqual(8);
     expect(character.baseDEF).toEqual(8);
+    expect(character.baseENERGY).toEqual(3);
     expect(character.LVL).toEqual(1);
+    expect(character.ENERGY).toEqual(3);
     expect(character.HP).toEqual(80);
     expect(character.ATK).toEqual(8);
     expect(character.DEF).toEqual(8);
@@ -44,14 +46,16 @@ describe('Character', () =>  {
 
   test('should return a cardPlayer obect with default stats', () => {
     const cardPlayer1 = new CardPlayer("Test");
-    expect(cardPlayer1.baseHP).toEqual(25);
+    expect(cardPlayer1.baseHP).toEqual(100);
     expect(cardPlayer1.baseATK).toEqual(12);
     expect(cardPlayer1.baseDEF).toEqual(4);
+    expect(cardPlayer1.baseENERGY).toEqual(3);
     expect(cardPlayer1.LVL).toEqual(1);
     expect(cardPlayer1.name).toEqual("Test");
-    expect(cardPlayer1.HP).toEqual(25);
+    expect(cardPlayer1.HP).toEqual(100);
     expect(cardPlayer1.ATK).toEqual(12);
     expect(cardPlayer1.DEF).toEqual(4);
+    expect(cardPlayer1.ENERGY).toEqual(3);
     expect(cardPlayer1.XP).toEqual(0);
 
   })
@@ -59,5 +63,3 @@ describe('Character', () =>  {
 
 
 });
-// (hp, atk, def, lvl, name)
-// super(25, 12, 4, 1, name);
